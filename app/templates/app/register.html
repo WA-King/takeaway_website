@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>注册页面</title>
+</head>
+<body>
+<form action="" method="POST">
+  {% csrf_token %}
+  账号:<input type="text" name="username"><br>
+  密码:<input type="password" name="password"><br>
+  账户类型:<br>
+  <input type="radio" name="usertype" value="server" checked="checked"> 商家
+  <input type="radio" name="usertype" value="client" > 用户 <br>
+  店铺图片链接:<input type="text" name="img"><br>
+  <input type="submit" value="提交">
+</form>
+</body>
+</html>

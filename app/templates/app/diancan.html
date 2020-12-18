@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>外卖点餐</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+ 
+  </head>
+  
+  <body>
+    	<!-- 最上面的部分 购物车部分-->
+    	<table width="100%">
+    		<td>
+                你好,{{username}}
+    			<a href="/app/logout/">退出</a>|<a href="/app/delete/">注销</a>|<a href="/app/test/">首页</a>
+    		</td>
+    	</table>
+    	
+    	<!-- 第二部分 目录部分 -->
+    	<table width="100%" bgcolor="#1C3F09" align="center">
+    		<td align="center">
+    			<font color="#ffffff">欢迎来到WA_King的外卖网站 </font>
+    		</td>
+    	</table>
+    	
+    	<!-- 第三部分 -->
+    	<table width="100%" bgcolor="#B6B684">
+    		<tr>
+    			<td align="right">
+    				Search<input type="text"/><button type="button">搜索</button>
+    			</td>
+    		</tr>
+    	</table>
+    	
+    	
+    	<!-- 第五部分 商家目录 -->
+    	<h1>菜品目录</h1>
+    	
+    	<!-- 第九部分 图书 -->
+    	<table width="100%" align="center">
+    		<tr>
+                {% for item in dish %}
+    			<td align="center">
+    				<img src= {{item.img}} width="200" height="200"/>
+                </td>
+                {% endfor %}
+    		</tr>
+    		<tr>
+                {% for item in dish %}
+                <td align="center">品名：{{item.dishname}}<br/>售价：{{item.price}}<br/>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div style="display: none;">
+                        <input type="text" name="dishname" value={{item.dishname}}>
+                        <input type="text" name="price" value={{item.price}}>
+                        <input id="next" type="text" name="action" value="minus" />
+                    </div>
+                    <input type="submit" value="-">
+                </form> 
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div style="display: none;">
+                        <input type="text" name="dishname" value={{item.dishname}}>
+                        <input type="text" name="price" value={{item.price}}>
+                        <input id="next" type="text" name="action" value="add" />
+                    </div>
+                    <input type="submit" value="+">
+                </form>
+
+                </td>
+                {% endfor %}
+    		</tr>
+        </table>
+        <H2>已点菜品</H2>
+        <table border="1">
+            <tr>
+            <td>店铺名</td>
+            <td>菜名</td>
+            <td>价格</td>
+            <td>数量</td>
+            </tr>
+            {% for item in order %}
+            <tr>
+                <td>
+                    {{item.servername}}
+                </td>
+                <td>
+                    {{item.dishname}}
+                </td>
+                <td>
+                    {{item.price}}
+                </td>
+                <td>
+                    {{item.num}}
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+        <H3>总价: {{sumprice}}元</H3>
+    	<!-- 第十部分 最后 -->
+    	<table width="100%" bgcolor="#EFEEDC">
+    		<tr>
+    			<td>CONTACT us</td>
+    		</tr>
+    		<tr>
+    			<td>phone:166081383839</td>
+    		</tr>
+    		<tr>
+    			<td>qq:403567557</td>
+    		</tr>
+    	</table>
+	
+  </body>
+</html>

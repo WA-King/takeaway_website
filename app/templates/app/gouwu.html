@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>外卖点餐</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+ 
+  </head>
+  
+  <body>
+    	<!-- 最上面的部分 购物车部分-->
+    	<table width="100%">
+    		<td>
+                你好,{{username}}
+    		</td>
+    		<td>
+    			<a href="/app/logout/">退出</a>|<a href="/app/delete/">注销</a>|<a href="#">我的账号</a>|<a href="#">新用户注册</a>
+    		</td>
+    	</table>
+    	
+    	<!-- 第二部分 目录部分 -->
+    	<table width="100%" bgcolor="#1C3F09" align="center">
+    		<td align="center">
+    			<font color="#ffffff">欢迎来到WA_King的外卖网站 </font>
+    		</td>
+    	</table>
+    	
+    	<!-- 第三部分 -->
+    	<table width="100%" bgcolor="#B6B684">
+    		<tr>
+    			<td align="right">
+    				Search<input type="text"/><button type="button">搜索</button>
+    			</td>
+    		</tr>
+    	</table>
+    	
+    	<!-- 第四部分 导引行 -->
+    	<div align="right">首页>旅游>图书列表</div>
+    	
+    	<!-- 第五部分 商家目录 -->
+    	<h1>商家目录</h1>
+    	<hr/>
+    	<!-- 第七部分 共xxx种商品 -->
+    	<span>共{{num_server}}家店铺</span>
+    	<hr>
+    	
+    	<!-- 第九部分 图书 -->
+    	<table width="100%" align="center">
+    		<tr>
+                {% for item in server %}
+    			<td align="center">
+    				<a href={{item.id}}><img src= {{item.img}} width="200" height="200"/></a>
+                </td>
+                {% endfor %}
+    		</tr>
+    		<tr>
+                {% for item in server %}
+    			<td align="center">店铺：{{item.username}}</td>
+                {% endfor %}
+    		</tr>
+    	</table>
+    	
+    	<!-- 第十部分 最后 -->
+    	<table width="100%" bgcolor="#EFEEDC">
+    		<tr>
+    			<td>CONTACT us</td>
+    		</tr>
+    		<tr>
+    			<td>phone:166081383839</td>
+    		</tr>
+    		<tr>
+    			<td>qq:403567557</td>
+    		</tr>
+    	</table>
+	
+  </body>
+</html>
